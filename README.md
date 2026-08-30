@@ -18,4 +18,4 @@ Select projects from [100 Days of Code: The Complete Professional Python Bootcam
 | 18 | [Hirst Painting](hirst-painting/) | external packages (`colorgram`) · `setpos()` positioning |
 | 19 | [Turtle Race](turtle-race/) | instances & state · higher order functions · `screen.textinput()` |
 | 21 | [Snake Game](snake-game/) | class inheritance · functions as inputs · slicing |
-| 22 | [Ping Pong](ping-pong/) | TBU |
+| 22 | [Ping Pong](ping-pong/) | collision detection · `distance()` · two-player key bindings · speed ramp on bounce |
