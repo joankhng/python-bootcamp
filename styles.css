@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000;
+  color: #f2f2f2;
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.terminal {
+  padding: 2.5rem 2rem;
+  max-width: 60rem;
+}
+
+.terminal p {
+  margin: 0 0 0.5rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.green {
+  color: #3fcf51;
+}
+
+.dim {
+  color: #8a8a8a;
+}
+
+a {
+  color: #f2f2f2;
+}
+
+a:hover {
+  color: #3fcf51;
+}
+
+#run-button {
+  font: inherit;
+  background: #f2f2f2;
+  color: #000;
+  border: none;
+  padding: 0 0.5em;
+  cursor: pointer;
+}
+
+#run-button:hover {
+  background: #3fcf51;
+}
+
+#run-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.console-input {
+  font: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  caret-color: #3fcf51;
+}
+
+.console-input:disabled {
+  opacity: 1;
+  color: #f2f2f2;
+  -webkit-text-fill-color: #f2f2f2;
+}
+
+.race-canvas[hidden] {
+  display: none;
+}
+
+.race-canvas {
+  display: block;
+  background: #111;
+  border: 1px solid #333;
+  margin: 0.75rem 0;
+  max-width: 100%;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.project-list li {
+  margin-bottom: 0.6rem;
+}
+
+.day {
+  color: #3fcf51;
+  margin-right: 0.75em;
+}
+
+.soon {
+  color: #8a8a8a;
+}
+
+.code-link {
+  color: #8a8a8a;
+  margin-left: 0.5em;
+  text-decoration: none;
+}
+
+.code-link:hover {
+  color: #3fcf51;
+}
+
+.footer-links {
+  margin-top: 2.5rem;
+}
+
+.footer-links a {
+  color: #8a8a8a;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #3fcf51;
+}
