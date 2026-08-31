@@ -1,11 +1,12 @@
 // This is the snake project (main.py, snake.py, food.py, scoreboard.py, wall.py)
 // re-created in JavaScript, so the game can run in a web page.
-// Same rules: 20px steps every 0.1s, food within +/-260, wall at +/-275,
-// no reversing into yourself, tail collision ends the game.
+// Same rules: 20px steps every 0.1s, food within +/-260, death past +/-265,
+// no reversing into yourself. Dying resets the snake and play continues.
+// The browser cannot write high_score.txt, so the high score is kept in
+// localStorage - the web equivalent of a small local file.
 
 const runButton = document.getElementById("run-button");
 const canvas = document.getElementById("game");
-const resultBox = document.getElementById("race-result");
 const ctx = canvas.getContext("2d");
 
 // Turtle coords: (0,0) at canvas centre (300, 300), y axis pointing up
@@ -18,7 +19,28 @@ const UP = 90, DOWN = 270, LEFT = 180, RIGHT = 0;
 const snake = { segments: [], heading: RIGHT };
 const food = { x: 0, y: 0 };
 let score = 0;
+let high_score = 0;
 let is_game_on = false;
+
+// scoreboard.py's file read, in browser form
+function load_high_score() {
+  try {
+    high_score = parseInt(localStorage.getItem("snake_high_score")) || 0;
+  } catch (e) {
+    high_score = 0;
+  }
+}
+
+function save_high_score() {
+  if (score > high_score) {
+    high_score = score;
+  }
+  try {
+    localStorage.setItem("snake_high_score", String(high_score));
+  } catch (e) {
+    // storage unavailable - the high score just lives for this visit
+  }
+}
 
 function randint(low, high) {
   return low + Math.floor(Math.random() * (high - low + 1));
@@ -57,7 +79,7 @@ function distance(a, b) {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
-function drawFrame(game_over = false) {
+function drawFrame() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -68,9 +90,9 @@ function drawFrame(game_over = false) {
 
   // scoreboard.py
   ctx.fillStyle = "#fff";
-  ctx.font = "20px Courier";
+  ctx.font = "18px Courier";
   ctx.textAlign = "center";
-  ctx.fillText(`Score: ${score}`, px(0), py(250));
+  ctx.fillText(`Score: ${score} High Score: ${high_score}`, px(0), py(250));
 
   // food
   ctx.fillStyle = "blue";
@@ -82,10 +104,6 @@ function drawFrame(game_over = false) {
   ctx.fillStyle = "#fff";
   for (const seg of snake.segments) {
     ctx.fillRect(px(seg.x) - 9, py(seg.y) - 9, 18, 18);
-  }
-
-  if (game_over) {
-    ctx.fillText("Game Over!", px(0), py(0));
   }
 }
 
@@ -101,13 +119,23 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight" && snake.heading !== LEFT) snake.heading = RIGHT;
 });
 
-// main.py's game loop
+// scoreboard.reset() + snake.reset() from the Python
+async function reset_after_death() {
+  save_high_score();
+  score = 0;
+  create_snake();
+  drawFrame();
+  await sleep(700);
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// main.py's game loop - endless, like the Python
 async function runProgram() {
   canvas.hidden = false;
+  load_high_score();
   create_snake();
   refresh_food();
   score = 0;
@@ -128,24 +156,21 @@ async function runProgram() {
     }
 
     // Detect collision with wall
-    if (head.x > 275 || head.x < -275 || head.y < -275 || head.y > 275) {
-      is_game_on = false;
+    if (head.x > 265 || head.x < -265 || head.y < -265 || head.y > 265) {
+      await reset_after_death();
+      continue;
     }
 
     // Detect collision with tail
     for (const segment of snake.segments.slice(1)) {
       if (distance(head, segment) < 10) {
-        is_game_on = false;
+        await reset_after_death();
+        break;
       }
     }
 
-    drawFrame(!is_game_on);
+    drawFrame();
   }
-
-  const done = document.createElement("p");
-  done.textContent = `Final score: ${score} (refresh the page to play again)`;
-  done.className = "dim";
-  resultBox.appendChild(done);
 }
 
 runButton.addEventListener("click", async () => {

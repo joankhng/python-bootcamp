@@ -17,6 +17,6 @@ Select projects from [100 Days of Code: The Complete Professional Python Bootcam
 | 17 | [Quiz Game](quiz-game/) | writing classes · `__init__` · attributes & methods |
 | 18 | [Hirst Painting](hirst-painting/) | external packages (`colorgram`) · `setpos()` positioning |
 | 19 | [Turtle Race](turtle-race/) | instances & state · higher order functions · `screen.textinput()` |
-| 21 | [Snake Game](snake-game/) | class inheritance · functions as inputs · slicing |
+| 21 | [Snake Game](snake-game/) | class inheritance · slicing · file read/write (high score) |
 | 22 | [Ping Pong](ping-pong/) | collision detection · `distance()` · two-player key bindings · speed ramp on bounce |
 | 23 | [Turtle Crossy Road](turtle-crossy-road/) | capstone: composing four classes · random spawning · custom lives & food twist |
