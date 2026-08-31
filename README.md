@@ -19,3 +19,4 @@ Select projects from [100 Days of Code: The Complete Professional Python Bootcam
 | 19 | [Turtle Race](turtle-race/) | instances & state · higher order functions · `screen.textinput()` |
 | 21 | [Snake Game](snake-game/) | class inheritance · functions as inputs · slicing |
 | 22 | [Ping Pong](ping-pong/) | collision detection · `distance()` · two-player key bindings · speed ramp on bounce |
+| 23 | [Turtle Crossy Road](turtle-crossy-road/) | capstone: composing four classes · random spawning · custom lives & food twist |
