@@ -27,6 +27,9 @@ class Scoreboard(Turtle):
             self.high_score = self.score
         with open("high_score.txt", mode="w") as f:
             f.write(f"{self.high_score}")
+        self.score = 0
+        self.clear()
+        self.update_scoreboard()
 
     # every refresh, score += 1
     def increase_score(self):
