@@ -20,3 +20,4 @@ Select projects from [100 Days of Code: The Complete Professional Python Bootcam
 | 21 | [Snake Game](snake-game/) | class inheritance · slicing · file read/write (high score) |
 | 22 | [Ping Pong](ping-pong/) | collision detection · `distance()` · two-player key bindings · speed ramp on bounce |
 | 23 | [Turtle Crossy Road](turtle-crossy-road/) | capstone: composing four classes · random spawning · custom lives & food twist |
+| 25 | [US States Game](us-states-game/) | `pandas` (`read_csv`/`to_csv`) · DataFrame filtering · `.title()` string method |
