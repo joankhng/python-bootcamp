@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 28 - Pomodoro</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* This page matches the Tkinter app's own colours instead of the site theme */
+    .pomodoro {
+      background: #f7f5dd;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      max-width: 400px;
+      margin: 1rem 0;
+    }
+    #title { font-size: 3rem; margin: 0; color: #9bdeac; font-weight: normal; }
+    .tomato { position: relative; display: inline-block; margin: 1rem 0; }
+    .tomato .emoji { font-size: 9rem; line-height: 1; }
+    #time {
+      position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%);
+      color: white; font-size: 2rem; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .buttons button {
+      font-family: inherit; font-size: 1rem; padding: 0.3rem 1.2rem;
+      margin: 0 1rem; cursor: pointer;
+    }
+    #checks { color: #9bdeac; font-size: 1.5rem; min-height: 2rem; }
+  </style>
+</head>
+<body>
+  <main class="terminal">
+    <div id="terminal-output">
+      <p class="green">Click Start - 25 minute focus sessions, 5 minute breaks, a long break every 4th round</p>
+    </div>
+    <div class="pomodoro">
+      <h1 id="title">Timer</h1>
+      <div class="tomato">
+        <div class="emoji">🍅</div>
+        <div id="time">00:00</div>
+      </div>
+      <div class="buttons">
+        <button id="start">Start</button>
+        <button id="reset">Reset</button>
+      </div>
+      <div id="checks"></div>
+    </div>
+    <p class="footer-links">
+      <a href="../">← all days</a> ·
+      <a href="https://github.com/joankhng/python-bootcamp/blob/main/pomodoro/main.py">view the Python code</a>
+    </p>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
