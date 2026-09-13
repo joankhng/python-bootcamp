@@ -1,6 +1,6 @@
-# 100 Days of Code — Python Bootcamp
+# My Python projects 
 
-Select projects from [100 Days of Code: The Complete Professional Python Bootcamp](https://www.udemy.com/course/100-days-of-code/) by Angela Yu.
+Select projects from [100 Days of Code: The Complete Professional Python Bootcamp](https://www.udemy.com/course/100-days-of-code/) by Dr. Angela Yu.
 
 | Day | Project | Key concepts |
 |----:|---------|--------------|
